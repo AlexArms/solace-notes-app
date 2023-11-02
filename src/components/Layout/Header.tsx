@@ -43,6 +43,23 @@ const Header = () => {
         <Link className="self-center" href="/login">
           Login
         </Link>
+        {/* <div
+          id="g_id_onload"
+          data-client_id="1045090794395-e38bg6suru579hu38be7aj2ne7mq1e63.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-login_uri="/login"
+          data-auto_prompt="false"
+        />
+        <div
+          className="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="signin_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div> */}
       </StyledNav>
     </StyledHeader>
   );

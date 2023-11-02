@@ -1,7 +1,8 @@
 import { Note } from "@/types/Note";
 import React, { useEffect } from "react";
-import NoteButton from "../Buttons/NoteButton";
+import NoteButton from "../Buttons/NoteActionButton";
 import { Box, styled } from "@mui/material";
+import NotePromptButton from "../Buttons/NotePromptButton";
 
 interface NoteProps {
   note: Note;
@@ -32,46 +33,42 @@ const StyledNoteContainer = styled(Box)(() => ({
     width: "90%",
   },
 }));
+const StyledNoteTopRow = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  height: "fit-content",
+  alignContent: "center",
+  // border: "1px solid white",
+}));
+const StyledNoteTitle = styled("h3")(() => ({
+  // border: "1px solid green",
+  // height: "100%",
+  // overflow: "hidden",
+  // whiteSpace: "nowrap",
+  // textOverflow: "ellipsis",
+}));
+const StyledButtonContainer = styled(Box)(() => ({
+  // border: "1px solid blue",
+  height: "100%",
+  display: "flex",
+  gap: 10,
+  alignContent: "center",
+}));
 
 const Note = ({ note }: NoteProps) => {
   return (
     <StyledNoteContainer>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          height: "fit-content",
-          alignContent: "center",
-          // border: "1px solid white",
-        }}
-      >
-        <h3
-          style={
-            {
-              // border: "1px solid green",
-              // height: "100%",
-              // overflow: "hidden",
-              // whiteSpace: "nowrap",
-              // textOverflow: "ellipsis",
-            }
-          }
-        >
-          {note.title}
-        </h3>
-        <div
-          style={{
-            // border: "1px solid blue",
-            height: "100%",
-            display: "flex",
-            gap: 10,
-            alignContent: "center",
-          }}
-        >
-          <NoteButton variant="delete" />
-          <NoteButton variant="update" />
-        </div>
-      </div>
+      <StyledNoteTopRow>
+        <StyledNoteTitle>{note.title}</StyledNoteTitle>
+        <StyledButtonContainer>
+          <NotePromptButton
+            noteAction="delete"
+            note={note}
+          />
+          <NotePromptButton noteAction="edit" note={note} />
+        </StyledButtonContainer>
+      </StyledNoteTopRow>
       <p>{note.content}</p>
     </StyledNoteContainer>
   );

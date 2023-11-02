@@ -5,4 +5,8 @@ export interface Note {
   editedAt: null | Date;
 }
 
-export type NoteAction = "create" | "delete" | "update";
+export type NoteAction =
+  | "create"
+  | "delete"
+  | "update"
+  | "edit";

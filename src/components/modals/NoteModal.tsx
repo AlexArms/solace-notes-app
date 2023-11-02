@@ -7,14 +7,13 @@ import {
   TextareaAutosize,
   styled,
 } from "@mui/material";
-import NoteButton from "../Buttons/NoteButton";
+
+import NiceModal from "@ebay/nice-modal-react";
+import { Note } from "@/types/Note";
+import NoteActionButton from "../Buttons/NoteActionButton";
 
 interface NodeModalProps {
   closeModal: () => void;
-}
-
-interface NoteFormProps {
-  variant: "create" | "update";
 }
 
 const StyledNoteFormContainer = styled(Box)(() => ({
@@ -43,45 +42,64 @@ const StyledTextArea = styled(TextareaAutosize)(() => ({
   borderRadius: "2px 2px 0 2px",
 }));
 
-const NoteModal = ({ closeModal }: NodeModalProps) => {
-  const { updateNewNoteData } = useNotesStore();
+interface NoteModalProps {
+  note?: Note;
+}
 
-  return (
-    <Dialog open={true} onClose={closeModal}>
-      <div
-        style={{
-          width: "400px",
-          height: "400px",
+const NoteModal = NiceModal.create(
+  ({ note }: NoteModalProps) => {
+    const { updateNewNoteData } = useNotesStore();
+
+    return (
+      <Dialog
+        open={true}
+        onClose={() => {
+          NiceModal.remove("create-or-edit-note");
         }}
       >
-        <StyledNoteFormContainer>
-          <div style={{ width: "100%" }}>
-            <StyledFormLabel htmlFor="title">
-              Note Title
-            </StyledFormLabel>
-            <StyledInput
-              type="text"
-              name="title"
-              placeholder="Note Title"
-              onChange={updateNewNoteData}
+        <div
+          style={{
+            width: "400px",
+            height: "400px",
+          }}
+        >
+          <StyledNoteFormContainer>
+            <div style={{ width: "100%" }}>
+              <StyledFormLabel htmlFor="title">
+                Note Title
+              </StyledFormLabel>
+              <StyledInput
+                type="text"
+                name="title"
+                placeholder="Note Title"
+                defaultValue={note?.title || ""}
+                onChange={updateNewNoteData}
+              />
+            </div>
+            <div style={{ width: "100%" }}>
+              <StyledFormLabel htmlFor="content">
+                Note content
+              </StyledFormLabel>
+              <StyledTextArea
+                minRows={6}
+                name="content"
+                placeholder="Write your note here"
+                defaultValue={note?.content || ""}
+                onChange={updateNewNoteData}
+              />
+            </div>
+            <NoteActionButton
+              variant={
+                note === undefined ? "create" : "update"
+              }
+              action="confirm"
+              note={note}
             />
-          </div>
-          <div style={{ width: "100%" }}>
-            <StyledFormLabel htmlFor="content">
-              Note content
-            </StyledFormLabel>
-            <StyledTextArea
-              minRows={6}
-              name="content"
-              placeholder="Write your note here"
-              onChange={updateNewNoteData}
-            />
-          </div>
-          <NoteButton variant="create" />
-        </StyledNoteFormContainer>
-      </div>
-    </Dialog>
-  );
-};
+          </StyledNoteFormContainer>
+        </div>
+      </Dialog>
+    );
+  }
+);
 
 export default NoteModal;

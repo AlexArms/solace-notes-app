@@ -20,16 +20,16 @@ const useNotes = () => {
     mutationData,
   }: {
     mutationType: NoteAction;
-    mutationData: any; // todo: fix typing
+    mutationData: { note?: Note };
   }): Promise<void> => {
     switch (mutationType) {
       case "create":
         createNote();
         break;
       case "delete":
-        deleteNote();
+        deleteNote(mutationData?.note);
       case "update":
-        updateNote();
+        updateNote(mutationData?.note);
       default:
         break;
     }
@@ -45,6 +45,7 @@ const useNotes = () => {
   });
 
   const createNote = () => {
+    console.log("creating note running");
     // POST request todo
     const createdAt = new Date();
     const noteHasTitle =
@@ -64,15 +65,15 @@ const useNotes = () => {
       // todo show alert about needing a title and content length parameters
     }
   };
-  const deleteNote = () => {
+  const deleteNote = (note: Note) => {
     // DELETE request todo
-    console.log("deleting note");
+    console.log("deleting note:", note);
   };
-  const updateNote = () => {
+  const updateNote = (note: Note) => {
     // PATCH request todo
-    console.log("updating note");
+    console.log("updating note: ", note);
   };
-  const searchNotes = () => {
+  const searchNotes = (searchTerm: string) => {
     // GET or POST request todo
     console.log("searching notes");
   };
