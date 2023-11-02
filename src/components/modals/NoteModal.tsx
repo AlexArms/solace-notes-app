@@ -29,15 +29,19 @@ const StyledNoteFormContainer = styled(Box)(() => ({
   alignItems: "center",
 }));
 const StyledFormLabel = styled(FormLabel)(() => ({
+  fontSize: "1.25rem",
   color: "#fff",
 }));
 const StyledInput = styled(Input)(() => ({
   color: "#fff",
+  width: "60%",
   outline: "1px solid white",
+  fontSize: "1rem",
   borderRadius: "2px",
 }));
 const StyledTextArea = styled(TextareaAutosize)(() => ({
   color: "#fff",
+  fontSize: "1rem",
   width: "100%",
   borderRadius: "2px 2px 0 2px",
 }));
@@ -64,30 +68,26 @@ const NoteModal = NiceModal.create(
           }}
         >
           <StyledNoteFormContainer>
-            <div style={{ width: "100%" }}>
-              <StyledFormLabel htmlFor="title">
-                Note Title
-              </StyledFormLabel>
-              <StyledInput
-                type="text"
-                name="title"
-                placeholder="Note Title"
-                defaultValue={note?.title || ""}
-                onChange={updateNewNoteData}
-              />
-            </div>
-            <div style={{ width: "100%" }}>
-              <StyledFormLabel htmlFor="content">
-                Note content
-              </StyledFormLabel>
-              <StyledTextArea
-                minRows={6}
-                name="content"
-                placeholder="Write your note here"
-                defaultValue={note?.content || ""}
-                onChange={updateNewNoteData}
-              />
-            </div>
+            <StyledFormLabel htmlFor="title">
+              Note Title
+            </StyledFormLabel>
+            <StyledInput
+              type="text"
+              name="title"
+              placeholder="Note Title"
+              defaultValue={note?.title || ""}
+              onChange={updateNewNoteData}
+            />
+            <StyledFormLabel htmlFor="content">
+              Note content
+            </StyledFormLabel>
+            <StyledTextArea
+              minRows={6}
+              name="content"
+              placeholder="Write your note here"
+              defaultValue={note?.content || ""}
+              onChange={updateNewNoteData}
+            />
             <NoteActionButton
               variant={
                 note === undefined ? "create" : "update"

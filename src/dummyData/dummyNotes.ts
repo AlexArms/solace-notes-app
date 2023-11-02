@@ -20,6 +20,19 @@ const notes = [
     createdAt: new Date(),
     editedAt: null,
   },
+  {
+    title: "api next",
+    content:
+      "api next because I need a database and api I can interact with for these",
+    createdAt: new Date(),
+    editedAt: null,
+  },
+  {
+    title: "Pirates arrrgh",
+    content: "where be the treasure matey",
+    createdAt: new Date(),
+    editedAt: null,
+  },
 ];
 
 export default notes;

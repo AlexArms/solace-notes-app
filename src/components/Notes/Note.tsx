@@ -56,6 +56,7 @@ const StyledButtonContainer = styled(Box)(() => ({
   justifyContent: "center",
   alignContent: "center",
 }));
+const StyledNoteContent = styled("p")(() => ({}));
 
 const Note = ({ note }: NoteProps) => {
   return (
@@ -70,7 +71,7 @@ const Note = ({ note }: NoteProps) => {
           <NotePromptButton noteAction="edit" note={note} />
         </StyledButtonContainer>
       </StyledNoteTopRow>
-      <p>{note.content}</p>
+      <StyledNoteContent>{note.content}</StyledNoteContent>
     </StyledNoteContainer>
   );
 };

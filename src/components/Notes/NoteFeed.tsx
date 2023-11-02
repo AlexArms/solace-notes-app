@@ -30,20 +30,6 @@ const NoteFeed = () => {
         {notes?.map((note) => {
           return <Note key={note.title} note={note} />;
         })}
-        {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
-        })}
-      </div>
-      <div className="text-center">
-        {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
-        })}
-        {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
-        })}
-        {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
-        })}
       </div>
     </>
   );

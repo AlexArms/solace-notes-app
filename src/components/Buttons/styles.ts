@@ -4,9 +4,10 @@ interface StyledButtonProps {
   bgColor: string;
 }
 
-export const StyledButton = styled(
-  Button
-)<StyledButtonProps>(({ bgColor }) => ({
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (propName: string) =>
+    !["bgColor"].includes(propName),
+})<StyledButtonProps>(({ bgColor }) => ({
   all: "unset",
   fontSize: "1.15rem",
   borderRadius: "2px",
