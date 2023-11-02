@@ -1,4 +1,4 @@
-import { useNotesStore } from "@/stores/NotesStore";
+import { useNewNoteStore } from "@/stores/NewNoteStore";
 import {
   Box,
   Dialog,
@@ -48,7 +48,7 @@ interface NoteModalProps {
 
 const NoteModal = NiceModal.create(
   ({ note }: NoteModalProps) => {
-    const { updateNewNoteData } = useNotesStore();
+    const { updateNewNoteData } = useNewNoteStore();
 
     return (
       <Dialog

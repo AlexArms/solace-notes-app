@@ -1,4 +1,14 @@
+import { Input, styled } from "@mui/material";
 import React, { useState } from "react";
+
+const StyledSearchInput = styled("input")(() => ({
+  unset: "all",
+  width: "250px",
+  borderRadius: "2px",
+  border: "1px solid white",
+  height: "100%",
+  fontSize: "1.25rem",
+}));
 
 const NoteSearch = () => {
   const [searchTerm, setSearchTerm] = useState();
@@ -10,23 +20,8 @@ const NoteSearch = () => {
   };
 
   return (
-    <div
-      className="
-      bg-gradient-to-b from-green-600 to-transparent
-      w-full
-      text-center"
-    >
-      <input
-        className="
-        text-black
-        rounded
-        bg-slate-200
-        border-2
-        border-solid
-        border-black
-        w-1/4
-        h-8
-        text-xl"
+    <div>
+      <StyledSearchInput
         type="text"
         placeholder="Search notes..."
         onChange={updateSearchTerm}

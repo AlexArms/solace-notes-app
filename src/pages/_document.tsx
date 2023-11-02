@@ -13,7 +13,13 @@ export default function Document() {
         src="https://accounts.google.com/gsi/client"
         async
       /> */}
-      <body style={{ height: "auto" }}>
+      <body
+        style={{
+          height: "auto",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <Main />
         <NextScript />
       </body>

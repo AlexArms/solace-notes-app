@@ -2,7 +2,7 @@ import NiceModal from "@ebay/nice-modal-react";
 import { StyledButton } from "./styles";
 import { Note, NoteAction } from "@/types/Note";
 
-interface NoteModalButtonProps {
+interface NotePromptButtonProps {
   noteAction: NoteAction;
   note?: Note;
 }
@@ -21,11 +21,18 @@ const actionToButtonTextMapping: Partial<{
   create: "Create New Note",
   edit: "Edit",
 };
+const actionToBgColorMapping: Partial<{
+  [value in NoteAction]: string;
+}> = {
+  delete: "rgb(255, 0, 0)",
+  create: "rgb(0, 153, 0)",
+  edit: "rgb(82, 122, 122)",
+};
 
 const NotePromptButton = ({
   noteAction,
   note,
-}: NoteModalButtonProps) => {
+}: NotePromptButtonProps) => {
   const openNoteModal = () => {
     NiceModal.show(
       actionToPromptMapping[noteAction] || "",
@@ -34,17 +41,12 @@ const NotePromptButton = ({
   };
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        width: "fit-content",
-        marginTop: "35px",
-      }}
+    <StyledButton
+      onClick={openNoteModal}
+      bgColor={actionToBgColorMapping[noteAction] || ""}
     >
-      <StyledButton onClick={openNoteModal}>
-        {actionToButtonTextMapping[noteAction]}
-      </StyledButton>
-    </div>
+      {actionToButtonTextMapping[noteAction]}
+    </StyledButton>
   );
 };
 

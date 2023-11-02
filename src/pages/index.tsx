@@ -8,8 +8,19 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <NotePromptButton noteAction="create" />
-      <NoteSearch />
+      <div
+        style={{
+          width: "100%",
+          margin: "50px auto 50px auto",
+          display: "flex",
+          height: "fit-content",
+          justifyContent: "center",
+          gap: "50px",
+        }}
+      >
+        <NotePromptButton noteAction="create" />
+        <NoteSearch />
+      </div>
       <NoteFeed />
     </>
   );

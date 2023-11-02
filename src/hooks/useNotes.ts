@@ -1,5 +1,5 @@
 import notes from "@/dummyData/dummyNotes";
-import { useNotesStore } from "@/stores/NotesStore";
+import { useNewNoteStore } from "@/stores/NewNoteStore";
 import { Note, NoteAction } from "@/types/Note";
 import {
   useMutation,
@@ -9,7 +9,7 @@ import {
 
 const useNotes = () => {
   const queryClient = useQueryClient();
-  const notesStore = useNotesStore();
+  const newNoteStore = useNewNoteStore();
   const { data: fetchedNotes } = useQuery<Note[]>({
     queryKey: ["notes"],
     queryFn: () => notes,
@@ -45,19 +45,19 @@ const useNotes = () => {
   });
 
   const createNote = () => {
-    console.log("creating note running");
+    console.log("createNote running");
     // POST request todo
     const createdAt = new Date();
     const noteHasTitle =
-      notesStore.newNoteData.title.length > 0;
+      newNoteStore.newNoteData.title.length > 0;
     const validNoteLength =
-      notesStore.newNoteData.content.length >= 20 &&
-      notesStore.newNoteData.content.length <= 300;
+      newNoteStore.newNoteData.content.length >= 20 &&
+      newNoteStore.newNoteData.content.length <= 300;
 
     if (noteHasTitle && validNoteLength) {
       console.log(
         "creating note with: ",
-        notesStore.newNoteData,
+        newNoteStore.newNoteData,
         " and ",
         createdAt
       );
@@ -67,15 +67,15 @@ const useNotes = () => {
   };
   const deleteNote = (note: Note) => {
     // DELETE request todo
-    console.log("deleting note:", note);
+    console.log("deleteNote:", note);
   };
   const updateNote = (note: Note) => {
     // PATCH request todo
-    console.log("updating note: ", note);
+    console.log("updateNote: ", note);
   };
   const searchNotes = (searchTerm: string) => {
     // GET or POST request todo
-    console.log("searching notes");
+    console.log("searchNotes searchTerm: ", searchTerm);
   };
 
   return {

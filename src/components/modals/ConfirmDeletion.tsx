@@ -6,16 +6,17 @@ import { styled } from "@mui/system";
 import NoteButton from "../Buttons/NoteActionButton";
 
 const StyledNoteFormContainer = styled(Box)(() => ({
-  // border: "2px solid white",
   background: "#0f0f0f",
   height: "100%",
-  padding: "10px",
   display: "flex",
+  gap: "20px",
   flexDirection: "column",
   margin: "auto",
   width: "100%",
   justifyContent: "space-evenly",
   alignItems: "center",
+  color: "#fff",
+  padding: "50px",
 }));
 
 interface ConfirmDeletionProps {
@@ -24,8 +25,6 @@ interface ConfirmDeletionProps {
 
 const ConfirmDeletion = NiceModal.create(
   ({ note }: ConfirmDeletionProps) => {
-    const notes = useNotes();
-
     return (
       <Dialog
         open={true}
@@ -34,15 +33,22 @@ const ConfirmDeletion = NiceModal.create(
         }}
       >
         <StyledNoteFormContainer>
-          <p>
+          <p
+            style={{
+              fontSize: "1.25rem",
+              maxWidth: "300px",
+            }}
+          >
             {"Are you sure you'd like to delete this note?"}
           </p>
-          <NoteButton
-            variant="delete"
-            action="confirm"
-            note={note}
-          />
-          <NoteButton variant="delete" action="cancel" />
+          <div style={{ display: "flex", gap: 20 }}>
+            <NoteButton
+              variant="delete"
+              action="confirm"
+              note={note}
+            />
+            <NoteButton variant="delete" action="cancel" />
+          </div>
         </StyledNoteFormContainer>
       </Dialog>
     );

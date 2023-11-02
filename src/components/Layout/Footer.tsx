@@ -3,13 +3,14 @@ import React from "react";
 const Footer = () => {
   return (
     <div
-      className="
-      w-full
-      font-2xl
-      p-10
-      text-center
-      sticky
-      bottom-0"
+      style={{
+        width: "100%",
+        textAlign: "center",
+        fontSize: "2rem",
+        position: "sticky",
+        bottom: 0,
+        marginBottom: "50px",
+      }}
     >
       Contact
     </div>

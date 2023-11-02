@@ -53,6 +53,7 @@ const StyledButtonContainer = styled(Box)(() => ({
   height: "100%",
   display: "flex",
   gap: 10,
+  justifyContent: "center",
   alignContent: "center",
 }));
 

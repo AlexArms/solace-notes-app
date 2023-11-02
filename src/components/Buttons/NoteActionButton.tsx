@@ -16,6 +16,15 @@ const variantButtonTextMapping = {
   update: "Submit",
 };
 
+const actionToBgColorMapping: Partial<{
+  [value in NoteAction]: string;
+}> = {
+  delete: "rgb(255, 0, 0)",
+  create: "rgb(0, 153, 0)",
+  edit: "rgb(82, 122, 122)",
+  update: "rgb(0, 153, 0)",
+};
+
 const NoteActionButton = ({
   variant,
   note,
@@ -25,6 +34,11 @@ const NoteActionButton = ({
 
   return (
     <StyledButton
+      bgColor={
+        action === "cancel"
+          ? "rgb(0, 153, 0)"
+          : actionToBgColorMapping[variant] || ""
+      }
       onClick={() => {
         if (action === "cancel") {
           NiceModal.remove("confirm-note-deletion");

@@ -1,9 +1,7 @@
-import { Note } from "@/types/Note";
 import debounce from "@/utility/debounce";
 import { create } from "zustand";
 
-interface NotesStore {
-  notes: Note[];
+interface NewNoteStore {
   newNoteData: {
     title: string;
     content: string;
@@ -15,9 +13,8 @@ interface NotesStore {
   ) => void;
 }
 
-export const useNotesStore = create<NotesStore>()(
+export const useNewNoteStore = create<NewNoteStore>()(
   (set) => ({
-    notes: [],
     newNoteData: {
       title: "",
       content: "",
