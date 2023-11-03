@@ -6,6 +6,7 @@ import {
   FormLabel,
   Input,
   Slide,
+  Snackbar,
   TextareaAutosize,
   styled,
 } from "@mui/material";
@@ -14,6 +15,7 @@ import NiceModal from "@ebay/nice-modal-react";
 import { Note } from "@/types/Note";
 import NoteActionButton from "../Buttons/NoteActionButton";
 import { useEffect } from "react";
+import useNotes from "@/hooks/useNotes";
 
 const StyledNoteFormContainer = styled(Box)(() => ({
   // border: "2px solid white",
@@ -56,8 +58,12 @@ interface NoteModalProps {
 
 const NoteModal = NiceModal.create(
   ({ note }: NoteModalProps) => {
-    const { updateNewNoteData, clearNewNoteData } =
-      useNewNoteStore();
+    const {
+      updateNewNoteData,
+      clearNewNoteData,
+      showSnackbar,
+      setShowSnackbar,
+    } = useNewNoteStore();
 
     useEffect(() => {
       if (note !== undefined) {
@@ -122,6 +128,12 @@ const NoteModal = NiceModal.create(
             />
           </StyledNoteFormContainer>
         </div>
+        <Snackbar
+          open={showSnackbar}
+          onClose={() => setShowSnackbar(false)}
+          message="Note length must be between 20 and 300 characters."
+          autoHideDuration={4_000}
+        />
       </Dialog>
     );
   }

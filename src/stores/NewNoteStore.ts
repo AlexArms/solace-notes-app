@@ -8,6 +8,8 @@ interface NewNoteStore {
   };
   updateNewNoteData: (noteFields: {}) => void;
   clearNewNoteData: () => void;
+  showSnackbar: boolean;
+  setShowSnackbar: (showSnackbar: boolean) => void;
 }
 
 export const useNewNoteStore = create<NewNoteStore>()(
@@ -30,6 +32,11 @@ export const useNewNoteStore = create<NewNoteStore>()(
           title: "",
           content: "",
         },
+      })),
+    showSnackbar: false,
+    setShowSnackbar: (showSnackbar: boolean) =>
+      set(() => ({
+        showSnackbar,
       })),
   })
 );

@@ -93,6 +93,7 @@ const useNotes = () => {
         });
         NiceModal.remove("create-or-edit-note");
       } else {
+        newNoteStore.setShowSnackbar(true);
         // todo show alert about needing a title and content length parameters - toast or modal?
       }
     } catch (error) {
