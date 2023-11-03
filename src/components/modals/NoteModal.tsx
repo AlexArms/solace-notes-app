@@ -65,6 +65,7 @@ const NoteModal = NiceModal.create(
         }}
         TransitionComponent={Slide}
         transitionDuration={500}
+        //@ts-ignore
         TransitionProps={{ direction: "up" }}
       >
         <div

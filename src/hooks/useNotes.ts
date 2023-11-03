@@ -27,8 +27,10 @@ const useNotes = () => {
         createNote();
         break;
       case "delete":
+        //@ts-ignore
         deleteNote(mutationData?.note);
       case "update":
+        //@ts-ignore
         updateNote(mutationData?.note);
       default:
         break;
