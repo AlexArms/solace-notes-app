@@ -8,7 +8,7 @@ I started it with Tailwind as I wanted to learn to use it, but wasn't a big fan 
 
 I ended up swapping from a separate Nodejs server in the repo above to using Nextjs's server API for ease of deployment, and I wanted to learn how to use it as well as Vercel.
 
-There is a lot of room for improvement as I believe a lot can still be structured far better (styled components in styles folders, better names for a lot of things, more reusability of components). There are a couple minor rendering or state-related bugs.
+There is a lot of room for improvement as I believe a lot can still be structured far better (styled components in styles folders, better names for a lot of things, more reusability of components) but I wanted to make sure this was handed off on the earlier side today. There are a couple minor rendering or state-related bugs.
 
 
 ## Public Deployment
