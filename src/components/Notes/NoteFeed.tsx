@@ -1,8 +1,17 @@
 import useNotes from "@/hooks/useNotes";
-import React, { useState } from "react";
+import { useState } from "react";
 import Note from "./Note";
 import NotePromptButton from "../Buttons/NotePromptButton";
 import NoteSearch from "./NoteSearch";
+import { styled } from "@mui/material";
+
+const StyledNoteFeedNotice = styled("p")(() => ({
+  color: "#fff",
+  height: "auto",
+  fontSize: "2rem",
+  textAlign: "center",
+  margin: "50px auto",
+}));
 
 const NoteFeed = () => {
   const { notes, searchNotes } = useNotes();
@@ -11,28 +20,19 @@ const NoteFeed = () => {
 
   if (!notes?.length && !searching) {
     return (
-      <p
-        style={{
-          color: "#fff",
-          height: "auto",
-          fontSize: "2rem",
-          textAlign: "center",
-          margin: "50px auto",
-        }}
-      >
+      <StyledNoteFeedNotice>
         Once you create some notes they will show up here
-      </p>
+      </StyledNoteFeedNotice>
     );
   }
 
   return (
-    <div>
+    <>
       <div
         style={{
           width: "100%",
-          margin: "50px auto 50px auto",
+          margin: "50px auto",
           display: "flex",
-          height: "fit-content",
           justifyContent: "center",
           gap: "50px",
         }}
@@ -43,25 +43,15 @@ const NoteFeed = () => {
           setSearching={setSearching}
         />
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {searching && !notes.length && (
-          <p
-            style={{
-              color: "#fff",
-              height: "auto",
-              fontSize: "2rem",
-              textAlign: "center",
-              margin: "50px auto",
-            }}
-          >
-            No notes found matching your search
-          </p>
-        )}
-        {notes?.map((note) => {
-          return <Note key={note._id} note={note} />;
-        })}
-      </div>
-    </div>
+      {searching && !notes.length && (
+        <StyledNoteFeedNotice>
+          No notes found matching your search
+        </StyledNoteFeedNotice>
+      )}
+      {notes?.map((note) => {
+        return <Note key={note._id} note={note} />;
+      })}
+    </>
   );
 };
 

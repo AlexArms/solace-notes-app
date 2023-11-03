@@ -41,7 +41,6 @@ const useNotes = () => {
           },
         }
       );
-      console.log("notes: ", notes);
 
       return notes.data;
     } catch (error: any) {
