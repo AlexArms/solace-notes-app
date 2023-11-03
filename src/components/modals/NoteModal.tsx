@@ -9,6 +9,7 @@ import {
   Snackbar,
   TextareaAutosize,
   styled,
+  useMediaQuery,
 } from "@mui/material";
 
 import NiceModal from "@ebay/nice-modal-react";
@@ -73,9 +74,14 @@ const NoteModal = NiceModal.create(
       }
     }, [note, updateNewNoteData, clearNewNoteData]);
 
+    const isMobilePortrait = useMediaQuery(
+      "@media (max-width: 500px)"
+    );
+
     return (
       <Dialog
         open={true}
+        // fullScreen={isMobilePortrait}
         onClose={() => {
           NiceModal.remove("create-or-edit-note");
         }}

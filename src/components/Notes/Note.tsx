@@ -13,9 +13,10 @@ const StyledNoteContainer = styled("fieldset")(() => ({
   // backgroundColor: "#0f0f0f",
   // backgroundColor: "rgb(0, 104, )", // green
   borderRadius: "6px",
+  margin: "auto",
   display: "flex",
   flexDirection: "column",
-  width: "100%",
+  width: "60%",
   maxWidth: "100%",
   padding: "16px",
   transform: "scale(1)",
@@ -25,11 +26,8 @@ const StyledNoteContainer = styled("fieldset")(() => ({
     transition: "all 100ms linear",
   },
 
-  "@media (max-width: 1000px)": {
-    width: "75%",
-  },
-  "@media (max-width: 800px)": {
-    width: "90%",
+  "@media (max-width: 900px)": {
+    width: "95%",
   },
 }));
 const StyledNoteTopRow = styled(Box)(() => ({
@@ -57,7 +55,7 @@ const Note = ({ note }: NoteProps) => {
   return (
     <form
       style={{
-        width: "60%",
+        width: "100%",
         maxWidth: "100%",
         margin: "16px auto",
       }}

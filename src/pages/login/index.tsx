@@ -3,6 +3,28 @@ import { Button, styled } from "@mui/material";
 import { Router, useRouter } from "next/router";
 import { useState } from "react";
 
+const StyledLoginContainer = styled("div")(() => ({
+  width: "35%",
+  background: "#0f0f0f",
+  borderRadius: "4px",
+  margin: "10% auto",
+  aspectRatio: 1 / 0.65,
+  display: "flex",
+  gap: "10px",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+
+  "@media (max-width: 900px)": {
+    width: "50%",
+    minWidth: "unset",
+  },
+  "@media (max-width: 500px)": {
+    width: "100%",
+    minWidth: "unset",
+  },
+}));
+
 const StyledLoginButton = styled(Button)(() => ({
   fontFamily: "Ubuntu, sans-serif",
   marginTop: "40px",
@@ -38,21 +60,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "30%",
-        minWidth: "500px",
-        background: "#0f0f0f",
-        borderRadius: "4px",
-        margin: "10% auto",
-        aspectRatio: 1 / 0.65,
-        display: "flex",
-        gap: "10px",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
+    <StyledLoginContainer>
       <label
         htmlFor="username"
         style={{
@@ -87,7 +95,7 @@ const Login = () => {
       <StyledLoginButton onClick={login}>
         Login
       </StyledLoginButton>
-    </div>
+    </StyledLoginContainer>
   );
 };
 
