@@ -8,7 +8,7 @@ import {
 export default function Document() {
   return (
     <Html lang="en" style={{ height: "auto" }}>
-      <Head></Head>
+      <Head />
       <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -22,7 +22,7 @@ export default function Document() {
       <link
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap"
         rel="stylesheet"
-      ></link>
+      />
       {/* <script
         src="https://accounts.google.com/gsi/client"
         async

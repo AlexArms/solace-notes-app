@@ -2,7 +2,7 @@ export interface Note {
   title: string;
   content: string;
   createdAt: Date;
-  editedAt: null | Date;
+  _id: string;
 }
 
 export type NoteAction =

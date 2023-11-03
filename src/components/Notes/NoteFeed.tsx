@@ -25,10 +25,7 @@ const NoteFeed = () => {
     <div>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
-        })}
-        {notes?.map((note) => {
-          return <Note key={note.title} note={note} />;
+          return <Note key={note._id} note={note} />;
         })}
       </div>
     </div>

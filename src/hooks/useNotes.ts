@@ -1,20 +1,51 @@
-import notes from "@/dummyData/dummyNotes";
 import { useNewNoteStore } from "@/stores/NewNoteStore";
+import { useUserStore } from "@/stores/UserStore";
 import { Note, NoteAction } from "@/types/Note";
+import NiceModal from "@ebay/nice-modal-react";
 import {
   useMutation,
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
 import axios from "axios";
+import { useEffect } from "react";
 
 const useNotes = () => {
   const queryClient = useQueryClient();
   const newNoteStore = useNewNoteStore();
+  const userStore = useUserStore();
   const { data: fetchedNotes } = useQuery<Note[]>({
     queryKey: ["notes"],
-    queryFn: () => notes,
+    queryFn: () => fetchNotes(),
+    enabled: !!userStore.user,
   });
+
+  useEffect(() => {
+    if (!userStore.user) {
+      queryClient.removeQueries({ queryKey: ["notes"] });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userStore.user, queryClient]);
+
+  const fetchNotes = async () => {
+    try {
+      const notes = await axios.get<Note[]>(
+        "http://localhost:4000/notes/get-all",
+        {
+          params: {
+            user: userStore.user,
+          },
+        }
+      );
+      console.log("notes: ", notes);
+
+      return notes.data;
+    } catch (error: any) {
+      console.log("fetchNotesError: ", error);
+
+      return [];
+    }
+  };
 
   const mutationFn = async ({
     mutationType,
@@ -59,9 +90,14 @@ const useNotes = () => {
       if (noteHasTitle && validNoteLength) {
         const createRequest = await axios.post(
           "http://localhost:4000/notes/create-note",
-          { note: newNoteStore.newNoteData }
+          {
+            note: {
+              ...newNoteStore.newNoteData,
+              user: userStore.user,
+            },
+          }
         );
-        console.log("createNote response: ", createRequest);
+        NiceModal.remove("create-or-edit-note");
       } else {
         // todo show alert about needing a title and content length parameters
       }
@@ -69,13 +105,33 @@ const useNotes = () => {
       console.error("createNote error: ", error);
     }
   };
-  const deleteNote = (note: Note) => {
-    // DELETE request todo
-    console.log("deleteNote:", note);
+  const deleteNote = async (note: Note) => {
+    console.log("deleteNote note:", note);
+    try {
+      const deleteNoteRequest = await axios.delete(
+        "http://localhost:4000/notes/delete-note",
+        {
+          data: note,
+        }
+      );
+      NiceModal.remove("confirm-note-deletion");
+    } catch (error: any) {
+      console.log("deleteNote error: ", error);
+    }
   };
-  const updateNote = (note: Note) => {
-    // PATCH request todo
+  const updateNote = async (note: Note) => {
     console.log("updateNote: ", note);
+    try {
+      const deleteNoteRequest = await axios.patch(
+        "http://localhost:4000/notes/update-note",
+        {
+          data: note,
+        }
+      );
+      NiceModal.remove("create-or-edit-note");
+    } catch (error: any) {
+      console.log("updateNote error: ", error);
+    }
   };
   const searchNotes = (searchTerm: string) => {
     // GET or POST request todo
