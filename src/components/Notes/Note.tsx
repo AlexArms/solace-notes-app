@@ -36,22 +36,23 @@ const StyledNoteTopRow = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  height: "fit-content",
   alignContent: "center",
   // border: "1px solid white",
 }));
 const StyledButtonContainer = styled(Box)(() => ({
   // border: "1px solid blue",
   height: "100%",
+  width: "fit-content",
   display: "flex",
   flexDirection: "column",
   gap: 10,
   justifyContent: "center",
   alignContent: "center",
 }));
-const StyledNoteContent = styled("p")(() => ({
-  maxWidth: "90%",
+const StyledNoteContent = styled("div")(() => ({
+  paddingRight: "2.5%",
   fontSize: "1.25rem",
+  overflowWrap: "anywhere",
 }));
 
 const Note = ({ note }: NoteProps) => {

@@ -19,14 +19,6 @@ const NoteFeed = () => {
   const [searching, setSearching] =
     useState<boolean>(false);
 
-  if (!notes?.length && !searching) {
-    return (
-      <StyledNoteFeedNotice>
-        Once you create some notes they will show up here
-      </StyledNoteFeedNotice>
-    );
-  }
-
   return (
     <>
       <div
@@ -45,6 +37,11 @@ const NoteFeed = () => {
         />
       </div>
       <NoteSort sortNotes={sortNotes} />
+      {!notes?.length && !searching && (
+        <StyledNoteFeedNotice>
+          Once you create some notes they will show up here
+        </StyledNoteFeedNotice>
+      )}
       {searching && !notes.length && (
         <StyledNoteFeedNotice>
           No notes found matching your search
