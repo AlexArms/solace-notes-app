@@ -1,3 +1,4 @@
+import useNotes from "@/hooks/useNotes";
 import { Input, styled } from "@mui/material";
 import React, { useState } from "react";
 
@@ -11,13 +12,21 @@ const StyledSearchInput = styled("input")(() => ({
   fontSize: "1.25rem",
 }));
 
-const NoteSearch = () => {
-  const [searchTerm, setSearchTerm] = useState();
-  // todo: create search field input and functionality for searching notes
-  // only filter if search term is >= 2 chars - filtering on 1 seems redundant
-  // search based on contents - maybe add based on date or title as a bonus
+const NoteSearch = ({
+  searchNotes,
+  setSearching,
+}: {
+  searchNotes: (term: string) => void;
+  setSearching: (searching: boolean) => void;
+}) => {
   const updateSearchTerm = (event: any) => {
-    setSearchTerm(event.target.value);
+    if (event.target.value.length > 0) {
+      console.log(event.target.value);
+      setSearching(true);
+    } else {
+      setSearching(false);
+    }
+    searchNotes(event.target.value);
   };
 
   return (
@@ -26,6 +35,12 @@ const NoteSearch = () => {
         type="text"
         placeholder="Search notes..."
         onChange={updateSearchTerm}
+        onKeyUp={(event) => {
+          //@ts-ignore - this exists -- // todo: figure out type fix
+          if (event.target.value.length === 0) {
+            searchNotes("");
+          }
+        }}
       />
     </div>
   );

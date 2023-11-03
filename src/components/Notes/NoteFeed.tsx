@@ -1,11 +1,15 @@
 import useNotes from "@/hooks/useNotes";
-import React from "react";
+import React, { useState } from "react";
 import Note from "./Note";
+import NotePromptButton from "../Buttons/NotePromptButton";
+import NoteSearch from "./NoteSearch";
 
 const NoteFeed = () => {
-  const { notes } = useNotes();
+  const { notes, searchNotes } = useNotes();
+  const [searching, setSearching] =
+    useState<boolean>(false);
 
-  if (!notes?.length) {
+  if (!notes?.length && !searching) {
     return (
       <p
         style={{
@@ -23,6 +27,22 @@ const NoteFeed = () => {
 
   return (
     <div>
+      <div
+        style={{
+          width: "100%",
+          margin: "50px auto 50px auto",
+          display: "flex",
+          height: "fit-content",
+          justifyContent: "center",
+          gap: "50px",
+        }}
+      >
+        <NotePromptButton noteAction="create" />
+        <NoteSearch
+          searchNotes={searchNotes}
+          setSearching={setSearching}
+        />
+      </div>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {notes?.map((note) => {
           return <Note key={note._id} note={note} />;

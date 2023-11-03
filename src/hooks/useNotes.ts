@@ -8,7 +8,8 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import fuzzysort from "fuzzysort";
 
 const useNotes = () => {
   const queryClient = useQueryClient();
@@ -19,6 +20,9 @@ const useNotes = () => {
     queryFn: () => fetchNotes(),
     enabled: !!userStore.user,
   });
+  const [notesToRender, setNotesToRender] = useState<
+    Note[]
+  >([]);
 
   useEffect(() => {
     if (!userStore.user) {
@@ -99,7 +103,7 @@ const useNotes = () => {
         );
         NiceModal.remove("create-or-edit-note");
       } else {
-        // todo show alert about needing a title and content length parameters
+        // todo show alert about needing a title and content length parameters - toast or modal?
       }
     } catch (error) {
       console.error("createNote error: ", error);
@@ -136,12 +140,32 @@ const useNotes = () => {
     }
   };
   const searchNotes = (searchTerm: string) => {
-    // GET or POST request todo
-    console.log("searchNotes searchTerm: ", searchTerm);
+    if (fetchedNotes !== undefined) {
+      if (searchTerm === "") {
+        return setNotesToRender(fetchedNotes);
+      }
+      const searchResults = fuzzysort.go(
+        searchTerm,
+        fetchedNotes,
+        {
+          key: "content",
+        }
+      );
+
+      setNotesToRender(
+        searchResults.map((result) => result.obj)
+      );
+    }
   };
 
+  useEffect(() => {
+    if (fetchedNotes !== undefined) {
+      setNotesToRender(fetchedNotes);
+    }
+  }, [fetchedNotes]);
+
   return {
-    notes: fetchedNotes,
+    notes: notesToRender,
     mutateNotes,
     searchNotes,
   };
