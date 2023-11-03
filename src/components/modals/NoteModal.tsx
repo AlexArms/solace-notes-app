@@ -131,7 +131,7 @@ const NoteModal = NiceModal.create(
         <Snackbar
           open={showSnackbar}
           onClose={() => setShowSnackbar(false)}
-          message="Note length must be between 20 and 300 characters."
+          message="Note length must be between 20 and 300 characters and you must have a title."
           autoHideDuration={4_000}
         />
       </Dialog>
