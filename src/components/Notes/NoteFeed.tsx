@@ -14,6 +14,18 @@ const StyledNoteFeedNotice = styled("p")(() => ({
   margin: "auto",
 }));
 
+const StyledRow = styled("div")(() => ({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  gap: "50px",
+
+  "@media (max-width: 500px)": {
+    flexDirection: "column",
+    gap: "20px",
+  },
+}));
+
 const NoteFeed = () => {
   const { notes, searchNotes, sortNotes } = useNotes();
   const [searching, setSearching] =
@@ -21,20 +33,13 @@ const NoteFeed = () => {
 
   return (
     <>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          gap: "50px",
-        }}
-      >
+      <StyledRow>
         <NotePromptButton noteAction="create" />
         <NoteSearch
           searchNotes={searchNotes}
           setSearching={setSearching}
         />
-      </div>
+      </StyledRow>
       <NoteSort sortNotes={sortNotes} />
       {!notes?.length && !searching && (
         <StyledNoteFeedNotice>

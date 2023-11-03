@@ -18,6 +18,10 @@ const StyledHeader = styled("header")(() => ({
 }));
 const StyledHeaderTitle = styled("h1")(() => ({
   fontSize: "calc(32px + 1vw)",
+
+  "@media (max-width: 500px)": {
+    fontSize: "1.5rem",
+  },
 }));
 const StyledNav = styled("nav")(() => ({
   height: "60%",
@@ -37,6 +41,13 @@ const StyledHr = styled("hr")(() => ({
   borderLeftStyle: "none",
   borderRightStyle: "none",
   height: "2px",
+}));
+const StyledGreeting = styled("p")(() => ({
+  fontSize: "1.25rem",
+
+  "@media (max-width: 500px)": {
+    fontSize: "1rem",
+  },
 }));
 
 const Header = () => {
@@ -60,9 +71,9 @@ const Header = () => {
           </StyledHeaderTitle>
         </Link>
         {userStore.user && (
-          <p style={{ fontSize: "1.25rem" }}>
+          <StyledGreeting>
             Hi, {userStore.user}!
-          </p>
+          </StyledGreeting>
         )}
         <StyledNav>
           <Link className="self-center" href="/">

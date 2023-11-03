@@ -1,15 +1,18 @@
-import useNotes from "@/hooks/useNotes";
-import { Input, styled } from "@mui/material";
-import React, { useState } from "react";
+import { styled } from "@mui/material";
 
 const StyledSearchInput = styled("input")(() => ({
   unset: "all",
-  width: "250px",
+  width: "175px",
   borderRadius: "2px",
   border: "1px solid white",
   height: "100%",
   fontFamily: "Ubuntu, sans-serif",
   fontSize: "1.25rem",
+
+  "@media (max-width:500px)": {
+    width: "100%",
+    height: "40px",
+  },
 }));
 
 const NoteSearch = ({

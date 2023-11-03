@@ -18,6 +18,13 @@ const StyledHr = styled("hr")(() => ({
   borderRightStyle: "none",
   height: "2px",
 }));
+const StyledA = styled("a")(() => ({
+  fontSize: "1.5rem",
+
+  "@media (max-width: 500px)": {
+    fontSize: "1.25rem",
+  },
+}));
 
 const Footer = () => {
   return (
@@ -30,13 +37,15 @@ const Footer = () => {
           gap: "50px",
         }}
       >
-        <a href="mailto: alexaarms96@gmail.com">Email Me</a>
-        <a
+        <StyledA href="mailto: alexaarms96@gmail.com">
+          Email Me
+        </StyledA>
+        <StyledA
           href="https://github.com/AlexArms?tab=repositories"
           target="_blank"
         >
           My Github
-        </a>
+        </StyledA>
       </div>
     </StyledFooter>
   );
