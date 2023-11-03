@@ -15,6 +15,8 @@ export const StyledButton = styled(Button, {
   color: "#fff",
   backgroundColor: bgColor,
   cursor: "pointer",
+  transform: "scale(1)",
+  transition: "all 100ms linear",
   ":hover": {
     // transform: "translateY(2px)",
     transform: "scale(1.05)",

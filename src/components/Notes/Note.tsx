@@ -18,9 +18,11 @@ const StyledNoteContainer = styled("fieldset")(() => ({
   width: "100%",
   maxWidth: "100%",
   padding: "16px",
+  transform: "scale(1)",
+  transition: "all 100ms linear",
   ":hover": {
     transform: "scale(1.05)",
-    transition: "all 50ms linear",
+    transition: "all 100ms linear",
   },
 
   "@media (max-width: 1000px)": {

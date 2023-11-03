@@ -2,8 +2,10 @@ import { useNewNoteStore } from "@/stores/NewNoteStore";
 import {
   Box,
   Dialog,
+  Fade,
   FormLabel,
   Input,
+  Slide,
   TextareaAutosize,
   styled,
 } from "@mui/material";
@@ -11,10 +13,6 @@ import {
 import NiceModal from "@ebay/nice-modal-react";
 import { Note } from "@/types/Note";
 import NoteActionButton from "../Buttons/NoteActionButton";
-
-interface NodeModalProps {
-  closeModal: () => void;
-}
 
 const StyledNoteFormContainer = styled(Box)(() => ({
   // border: "2px solid white",
@@ -65,6 +63,9 @@ const NoteModal = NiceModal.create(
         onClose={() => {
           NiceModal.remove("create-or-edit-note");
         }}
+        TransitionComponent={Slide}
+        transitionDuration={500}
+        TransitionProps={{ direction: "up" }}
       >
         <div
           style={{
