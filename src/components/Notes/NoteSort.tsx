@@ -12,6 +12,7 @@ const StyledSelect = styled("select")(() => ({
   fontSize: "1.25rem",
   height: "40px",
   textAlign: "center",
+  cursor: "pointer",
 }));
 
 const NoteSort = ({ sortNotes }: NoteSortProps) => {
