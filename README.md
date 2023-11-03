@@ -17,10 +17,10 @@ You can find this app deployed on Vercel [here](https://solace-notes-app-n5le.ve
 
 ## Running Locally
 
-1. Clone the repo
+1. Clone the repo on to your computer
 2. cd into the folder
 3. Run npm install
-4. Ensure you have mongodb running locally
+4. Ensure you have mongodb installed and running locally on its default port - 27017
 5. Change .env.local.example to .env.local - it already has the mongo env variable configured for local development
-6. npm run dev
+6. Run npm run dev
 7. Open localhost:3000 in your browser
