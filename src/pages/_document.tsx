@@ -16,7 +16,7 @@ export default function Document() {
       <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
-        //@ts-ignore - // todo: fix typing
+        //@ts-ignore - // todo: fix typing - is this needed? was from google fonts
         crossOrigin
       />
       <link

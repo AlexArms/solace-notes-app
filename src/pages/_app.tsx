@@ -15,6 +15,7 @@ export default function App({
     if (user) {
       userStore.setUser(user);
     }
+    userStore.setCheckingUser(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

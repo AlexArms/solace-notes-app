@@ -119,13 +119,15 @@ const useNotes = () => {
       console.log("deleteNote error: ", error);
     }
   };
-  const updateNote = async (note: Note) => {
-    console.log("updateNote: ", note);
+  const updateNote = async (currentNote: Note) => {
     try {
-      const deleteNoteRequest = await axios.patch(
+      const updateNoteRequest = await axios.patch(
         "http://localhost:4000/notes/update-note",
         {
-          data: note,
+          data: {
+            ...currentNote,
+            ...newNoteStore.newNoteData,
+          },
         }
       );
       NiceModal.remove("create-or-edit-note");

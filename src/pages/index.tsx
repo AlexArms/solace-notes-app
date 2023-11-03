@@ -39,7 +39,9 @@ export default function Home() {
             fontSize: "1.5rem",
           }}
         >
-          Please log in to use this app!
+          {userStore.checkingUser
+            ? "Loading..."
+            : "Please log in to use this app!"}
         </div>
       )}
     </>
