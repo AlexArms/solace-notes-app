@@ -2,24 +2,20 @@ import { useNewNoteStore } from "@/stores/NewNoteStore";
 import {
   Box,
   Dialog,
-  Fade,
   FormLabel,
   Input,
   Slide,
   Snackbar,
   TextareaAutosize,
   styled,
-  useMediaQuery,
 } from "@mui/material";
 
 import NiceModal from "@ebay/nice-modal-react";
 import { Note } from "@/types/Note";
 import NoteActionButton from "../Buttons/NoteActionButton";
 import { useEffect } from "react";
-import useNotes from "@/hooks/useNotes";
 
 const StyledNoteFormContainer = styled(Box)(() => ({
-  // border: "2px solid white",
   background: "#0f0f0f",
   height: "100%",
   padding: "10px",
@@ -27,7 +23,8 @@ const StyledNoteFormContainer = styled(Box)(() => ({
   flexDirection: "column",
   margin: "auto",
   width: "100%",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
+  gap: "20px",
   alignItems: "center",
   fontFamily: "Ubuntu, sans-serif",
 }));
@@ -74,14 +71,23 @@ const NoteModal = NiceModal.create(
       }
     }, [note, updateNewNoteData, clearNewNoteData]);
 
-    const isMobilePortrait = useMediaQuery(
-      "@media (max-width: 500px)"
-    );
-
     return (
       <Dialog
         open={true}
-        // fullScreen={isMobilePortrait}
+        sx={{
+          height: "100%",
+          ".MuiDialog-container": {
+            width: "100%",
+          },
+          ".MuiPaper-root": {
+            width: "100%",
+            height: "fit-content",
+          },
+          ".MuiDialog-root": {
+            width: "100%",
+            height: "100%",
+          },
+        }}
         onClose={() => {
           NiceModal.remove("create-or-edit-note");
         }}
@@ -92,8 +98,8 @@ const NoteModal = NiceModal.create(
       >
         <div
           style={{
-            width: "400px",
-            height: "400px",
+            width: "100%",
+            height: "100%",
           }}
         >
           <StyledNoteFormContainer>
