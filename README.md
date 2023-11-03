@@ -1,6 +1,6 @@
 ## About
 
-This is a notes app with Nextjs, Typescript, MUI + styled components, Nextjs API, and MongoDB w/mongoose as the core tech. I started it with Tailwind as I wanted to learn to use it, but wasn't a big fan of it. There is also an express server I created prior to swapping over to using Nextjs's server API. You can find that here (link pending)
+This is a notes app with Nextjs, Typescript, MUI + styled components, Nextjs API, and MongoDB w/mongoose as the core tech. I started it with Tailwind as I wanted to learn to use it, but wasn't a big fan of it. There is also an express server I created prior to swapping over to using Nextjs's server API. You can find that [here](https://github.com/AlexArms/old-solace-notes-app-server).
 
 ## Public Deployment
 
