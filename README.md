@@ -1,40 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About the App
 
-## Getting Started
+This is a notes app with Nextjs, Typescript, MUI + styled components, Nextjs API, and MongoDB w/mongoose as the core tech. There is also an express server I created prior to swapping over to using Nextjs's server API. You can find that [here](https://github.com/AlexArms/old-solace-notes-app-server).
 
-First, run the development server:
+I spent some time working on implementing proper authentication using Google 0Auth, but ran in to a couple issues and decided to put it on the backburner and continue on without it. Nextjs did not like it when the imported script that inserted the login button caused initial renders client-side to be different from server-side. I am planning on troubleshooting this.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I started it with Tailwind as I wanted to learn to use it, but wasn't a big fan of it. It also would have slowed me down. It felt a little restrictive but perhaps I just didn't spend enough time with it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I ended up swapping from a separate Nodejs server in the repo above to using Nextjs's server API for ease of deployment, and I wanted to learn how to use it as well as Vercel.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+There is a lot of room for improvement as I believe a lot can still be structured far better (styled components in styles folders, better names for a lot of things, more reusability of components) but I wanted to make sure this was handed off on the earlier side today. There are a couple minor rendering or state-related bugs.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Public Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You can find this app deployed on Vercel [here](https://solace-notes-app-n5le.vercel.app/).
 
-## Learn More
+## Running Locally
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone the repo on to your computer
+2. cd into the folder
+3. Run npm install
+4. Ensure you have mongodb installed and running locally on its default port - 27017
+5. Change .env.local.example to .env.local - it already has the mongo env variable configured for local development
+6. Run npm run dev
+7. Open localhost:3000 in your browser
