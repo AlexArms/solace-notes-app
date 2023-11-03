@@ -32,34 +32,56 @@ const StyledNav = styled("nav")(() => ({
   color: "#000",
   boxShadow: "0px 0px 10px white",
 }));
+const StyledHr = styled("hr")(() => ({
+  width: "100%",
+  borderLeftStyle: "none",
+  borderRightStyle: "none",
+  height: "2px",
+}));
 
 const Header = () => {
   const userStore = useUserStore();
   return (
-    <StyledHeader>
-      <Link href="/">
-        <StyledHeaderTitle>Solace Notes</StyledHeaderTitle>
-      </Link>
-      {userStore.user && (
-        <p style={{ fontSize: "1.25rem" }}>
-          Hi, {userStore.user}!
-        </p>
-      )}
-      <StyledNav>
-        <Link className="self-center" href="/">
-          Notes
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "60px",
+        zIndex: 10,
+        position: "sticky",
+        top: 0,
+      }}
+    >
+      <StyledHeader>
+        <Link href="/">
+          <StyledHeaderTitle>
+            Solace Notes
+          </StyledHeaderTitle>
         </Link>
-        |
-        {userStore.user ? (
-          <Link href="/" onClick={() => userStore.logout()}>
-            Logout
-          </Link>
-        ) : (
-          <Link className="self-center" href="/login">
-            Login
-          </Link>
+        {userStore.user && (
+          <p style={{ fontSize: "1.25rem" }}>
+            Hi, {userStore.user}!
+          </p>
         )}
-        {/* <div
+        <StyledNav>
+          <Link className="self-center" href="/">
+            Notes
+          </Link>
+          |
+          {userStore.user ? (
+            <Link
+              href="/"
+              onClick={() => userStore.logout()}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link className="self-center" href="/login">
+              Login
+            </Link>
+          )}
+          {/* <div
           id="g_id_onload"
           data-client_id="1045090794395-e38bg6suru579hu38be7aj2ne7mq1e63.apps.googleusercontent.com"
           data-context="signin"
@@ -76,8 +98,10 @@ const Header = () => {
           data-size="large"
           data-logo_alignment="left"
         ></div> */}
-      </StyledNav>
-    </StyledHeader>
+        </StyledNav>
+      </StyledHeader>
+      <StyledHr />
+    </div>
   );
 };
 

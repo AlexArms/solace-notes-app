@@ -33,7 +33,7 @@ export default function Document() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
-          backgroundColor: "grey !important",
+          backgroundColor: "black !important",
           fontFamily: "Ubuntu, sans-serif",
         }}
       >
