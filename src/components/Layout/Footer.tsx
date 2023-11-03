@@ -9,8 +9,8 @@ const StyledFooter = styled("footer")(() => ({
   background: "black",
   flexDirection: "column",
   paddingBottom: "10px",
-  position: "sticky",
-  bottom: 0,
+  // position: "sticky",
+  // bottom: 0,
 }));
 const StyledHr = styled("hr")(() => ({
   width: "100%",
