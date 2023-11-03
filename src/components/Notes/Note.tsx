@@ -72,7 +72,7 @@ const Note = ({ note }: NoteProps) => {
             background: "black",
             border: "2px solid grey",
             borderRadius: "6px",
-            padding: "2px",
+            padding: "4px 10px",
           }}
         >
           {note.title}
