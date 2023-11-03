@@ -11,9 +11,7 @@ export default function Home() {
   return (
     <>
       {userStore.user ? (
-        <>
-          <NoteFeed />
-        </>
+        <NoteFeed />
       ) : (
         <div
           style={{

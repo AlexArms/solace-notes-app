@@ -44,6 +44,19 @@ const NoteFeed = () => {
         />
       </div>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {searching && !notes.length && (
+          <p
+            style={{
+              color: "#fff",
+              height: "auto",
+              fontSize: "2rem",
+              textAlign: "center",
+              margin: "50px auto",
+            }}
+          >
+            No notes found matching your search
+          </p>
+        )}
         {notes?.map((note) => {
           return <Note key={note._id} note={note} />;
         })}
