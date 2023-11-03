@@ -8,7 +8,7 @@ const StyledSelect = styled("select")(() => ({
   width: "fit-content",
   padding: "0px 20px",
   borderRadius: "4px",
-  margin: "auto",
+  margin: "0px auto",
   fontSize: "1.25rem",
   height: "40px",
   textAlign: "center",

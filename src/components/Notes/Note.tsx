@@ -37,10 +37,8 @@ const StyledNoteTopRow = styled(Box)(() => ({
   justifyContent: "space-between",
   alignItems: "center",
   alignContent: "center",
-  // border: "1px solid white",
 }));
 const StyledButtonContainer = styled(Box)(() => ({
-  // border: "1px solid blue",
   height: "100%",
   width: "fit-content",
   display: "flex",
@@ -68,7 +66,6 @@ const Note = ({ note }: NoteProps) => {
         <legend
           style={{
             fontSize: "1.5rem",
-            // border: "2px solid black",
             background: "black",
             border: "2px solid grey",
             borderRadius: "6px",

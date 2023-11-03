@@ -21,7 +21,6 @@ const NoteSearch = ({
 }) => {
   const updateSearchTerm = (event: any) => {
     if (event.target.value.length > 0) {
-      console.log(event.target.value);
       setSearching(true);
     } else {
       setSearching(false);

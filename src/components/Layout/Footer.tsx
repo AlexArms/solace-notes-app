@@ -3,26 +3,41 @@ import React from "react";
 
 const StyledFooter = styled("footer")(() => ({
   width: "100%",
-  textAlign: "center",
   fontSize: "2rem",
   display: "flex",
+  gap: "10px",
+  background: "black",
+  flexDirection: "column",
+  paddingBottom: "10px",
   position: "sticky",
   bottom: 0,
-  justifyContent: "center",
-  gap: "50px",
-  marginBottom: "50px",
+}));
+const StyledHr = styled("hr")(() => ({
+  width: "100%",
+  borderLeftStyle: "none",
+  borderRightStyle: "none",
+  height: "2px",
 }));
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <a href="mailto: alexaarms96@gmail.com">Email Me</a>
-      <a
-        href="https://github.com/AlexArms?tab=repositories"
-        target="_blank"
+      <StyledHr />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "50px",
+        }}
       >
-        My Github
-      </a>
+        <a href="mailto: alexaarms96@gmail.com">Email Me</a>
+        <a
+          href="https://github.com/AlexArms?tab=repositories"
+          target="_blank"
+        >
+          My Github
+        </a>
+      </div>
     </StyledFooter>
   );
 };

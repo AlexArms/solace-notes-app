@@ -11,18 +11,14 @@ import { styled } from "@mui/material";
 const queryClient = new QueryClient();
 
 const StyledMain = styled("main")(() => ({
-  height: "100%",
+  height: "fit-content",
+  minHeight: "100%",
   width: "100%",
   display: "flex",
+  justifyContent: "flex-start",
+  gap: "25px",
   paddingTop: "15px",
   flexDirection: "column",
-}));
-const StyledHr = styled("hr")(() => ({
-  width: "100%",
-  borderLeftStyle: "none",
-  borderRightStyle: "none",
-  height: "6px",
-  margin: "30px auto",
 }));
 
 const Layout = ({ children }: any) => {
@@ -31,7 +27,6 @@ const Layout = ({ children }: any) => {
       <NiceModal.Provider>
         <Header />
         <StyledMain>{children}</StyledMain>
-        <StyledHr />
         <Footer />
       </NiceModal.Provider>
     </QueryClientProvider>

@@ -22,7 +22,6 @@ export default async function handler(
       }
       break;
     case "POST":
-      console.log("in notes/post: ", req.body);
       try {
         const note = await Notes.create({
           ...req.body.note,
@@ -34,7 +33,6 @@ export default async function handler(
       }
       break;
     case "PATCH":
-      console.log("in notes/patch: ", req.body);
       try {
         const note = await Notes.updateOne(
           { _id: req.body.data._id },
@@ -48,7 +46,6 @@ export default async function handler(
       }
       break;
     case "DELETE":
-      console.log("in notes/delete: ", req.body);
       try {
         const note = await Notes.deleteOne({
           _id: req.body._id,

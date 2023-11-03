@@ -39,12 +39,8 @@ const useNotes = () => {
         },
       });
 
-      console.log("notes: ", notes);
-
       return notes.data;
     } catch (error: any) {
-      console.log("fetchNotesError: ", error);
-
       return [];
     }
   };
@@ -89,15 +85,12 @@ const useNotes = () => {
         newNoteStore.newNoteData.content.length <= 300;
 
       if (noteHasTitle && validNoteLength) {
-        const createRequest = await axios.post(
-          "/api/notes",
-          {
-            note: {
-              ...newNoteStore.newNoteData,
-              user: userStore.user,
-            },
-          }
-        );
+        await axios.post("/api/notes", {
+          note: {
+            ...newNoteStore.newNoteData,
+            user: userStore.user,
+          },
+        });
         NiceModal.remove("create-or-edit-note");
       } else {
         // todo show alert about needing a title and content length parameters - toast or modal?
@@ -107,34 +100,23 @@ const useNotes = () => {
     }
   };
   const deleteNote = async (note: Note) => {
-    console.log("deleteNote note:", note);
     try {
-      const deleteNoteRequest = await axios.delete(
-        "/api/notes",
-        {
-          data: note,
-        }
-      );
+      await axios.delete("/api/notes", {
+        data: note,
+      });
       NiceModal.remove("confirm-note-deletion");
-    } catch (error: any) {
-      console.log("deleteNote error: ", error);
-    }
+    } catch (error: any) {}
   };
   const updateNote = async (currentNote: Note) => {
     try {
-      const updateNoteRequest = await axios.patch(
-        "/api/notes",
-        {
-          data: {
-            ...currentNote,
-            ...newNoteStore.newNoteData,
-          },
-        }
-      );
+      await axios.patch("/api/notes", {
+        data: {
+          ...currentNote,
+          ...newNoteStore.newNoteData,
+        },
+      });
       NiceModal.remove("create-or-edit-note");
-    } catch (error: any) {
-      console.log("updateNote error: ", error);
-    }
+    } catch (error: any) {}
   };
   const searchNotes = (searchTerm: string) => {
     if (fetchedNotes !== undefined) {
@@ -185,8 +167,6 @@ const useNotes = () => {
       setNotesToRender(fetchedNotes);
     }
   }, [fetchedNotes]);
-
-  console.log("notesToRender: ", notesToRender);
 
   return {
     notes: notesToRender,

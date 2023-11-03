@@ -11,7 +11,7 @@ const StyledNoteFeedNotice = styled("p")(() => ({
   height: "auto",
   fontSize: "2rem",
   textAlign: "center",
-  margin: "50px auto",
+  margin: "auto",
 }));
 
 const NoteFeed = () => {
@@ -24,7 +24,6 @@ const NoteFeed = () => {
       <div
         style={{
           width: "100%",
-          margin: "50px auto",
           display: "flex",
           justifyContent: "center",
           gap: "50px",

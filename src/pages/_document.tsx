@@ -7,7 +7,7 @@ import {
 
 export default function Document() {
   return (
-    <Html lang="en" style={{ height: "auto" }}>
+    <Html lang="en" style={{ height: "100%" }}>
       <Head />
       <link
         rel="preconnect"
@@ -29,9 +29,10 @@ export default function Document() {
       /> */}
       <body
         style={{
-          height: "auto",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
+          justifyContent: "flex-start",
           backgroundColor: "grey !important",
           fontFamily: "Ubuntu, sans-serif",
         }}

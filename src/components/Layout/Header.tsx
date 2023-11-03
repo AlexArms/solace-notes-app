@@ -8,11 +8,12 @@ const StyledHeader = styled("header")(() => ({
   display: "flex",
   justifyContent: "space-between",
   // backgroundColor: "rgb(0, 102, 34)",
+  backgroundColor: "black",
   alignItems: "center",
   padding: "0px 20px",
   height: "60px",
   zIndex: 10,
-  position: "absolute",
+  position: "sticky",
   top: 0,
 }));
 const StyledHeaderTitle = styled("h1")(() => ({
