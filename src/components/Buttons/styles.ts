@@ -14,6 +14,7 @@ export const StyledButton = styled(Button, {
   padding: "8px 14px",
   color: "#fff",
   backgroundColor: bgColor,
+  textAlign: "center",
   cursor: "pointer",
   transform: "scale(1)",
   transition: "all 100ms linear",
