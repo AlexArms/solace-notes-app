@@ -8,19 +8,16 @@ interface NoteProps {
   note: Note;
 }
 
-const StyledNoteContainer = styled(Box)(() => ({
+const StyledNoteContainer = styled("fieldset")(() => ({
   backgroundColor: "#000",
   // backgroundColor: "#0f0f0f",
-  // backgroundColor: "#090909",
+  // backgroundColor: "rgb(0, 104, )", // green
   borderRadius: "6px",
   display: "flex",
   flexDirection: "column",
-  gap: "10px",
-  width: "60%",
+  width: "100%",
   maxWidth: "100%",
-  padding: "12px",
-  boxShadow: "0px 0px 8px white",
-  margin: "16px auto",
+  padding: "16px",
   ":hover": {
     transform: "scale(1.05)",
     transition: "all 50ms linear",
@@ -41,38 +38,59 @@ const StyledNoteTopRow = styled(Box)(() => ({
   alignContent: "center",
   // border: "1px solid white",
 }));
-const StyledNoteTitle = styled("h3")(() => ({
-  // border: "1px solid green",
-  // height: "100%",
-  // overflow: "hidden",
-  // whiteSpace: "nowrap",
-  // textOverflow: "ellipsis",
-}));
 const StyledButtonContainer = styled(Box)(() => ({
   // border: "1px solid blue",
   height: "100%",
   display: "flex",
+  flexDirection: "column",
   gap: 10,
   justifyContent: "center",
   alignContent: "center",
 }));
-const StyledNoteContent = styled("p")(() => ({}));
+const StyledNoteContent = styled("p")(() => ({
+  maxWidth: "90%",
+  fontSize: "1.25rem",
+}));
 
 const Note = ({ note }: NoteProps) => {
   return (
-    <StyledNoteContainer>
-      <StyledNoteTopRow>
-        <StyledNoteTitle>{note.title}</StyledNoteTitle>
-        <StyledButtonContainer>
-          <NotePromptButton
-            noteAction="delete"
-            note={note}
-          />
-          <NotePromptButton noteAction="edit" note={note} />
-        </StyledButtonContainer>
-      </StyledNoteTopRow>
-      <StyledNoteContent>{note.content}</StyledNoteContent>
-    </StyledNoteContainer>
+    <form
+      style={{
+        width: "60%",
+        maxWidth: "100%",
+        margin: "16px auto",
+      }}
+    >
+      <StyledNoteContainer>
+        <legend
+          style={{
+            fontSize: "1.5rem",
+            // border: "2px solid black",
+            background: "black",
+            border: "2px solid grey",
+            borderRadius: "6px",
+            padding: "2px",
+          }}
+        >
+          {note.title}
+        </legend>
+        <StyledNoteTopRow>
+          <StyledNoteContent>
+            {note.content}
+          </StyledNoteContent>
+          <StyledButtonContainer>
+            <NotePromptButton
+              noteAction="edit"
+              note={note}
+            />
+            <NotePromptButton
+              noteAction="delete"
+              note={note}
+            />
+          </StyledButtonContainer>
+        </StyledNoteTopRow>
+      </StyledNoteContainer>
+    </form>
   );
 };
 

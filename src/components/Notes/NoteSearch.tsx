@@ -7,6 +7,7 @@ const StyledSearchInput = styled("input")(() => ({
   borderRadius: "2px",
   border: "1px solid white",
   height: "100%",
+  fontFamily: "Ubuntu, sans-serif",
   fontSize: "1.25rem",
 }));
 

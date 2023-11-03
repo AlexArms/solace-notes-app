@@ -14,6 +14,7 @@ export const StyledButton = styled(Button, {
   padding: "8px 14px",
   color: "#fff",
   backgroundColor: bgColor,
+  cursor: "pointer",
   ":hover": {
     // transform: "translateY(2px)",
     transform: "scale(1.05)",

@@ -6,12 +6,12 @@ const StyledHeader = styled("header")(() => ({
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
-  backgroundColor: "rgb(0, 102, 34)",
+  // backgroundColor: "rgb(0, 102, 34)",
   alignItems: "center",
   padding: "0px 20px",
   height: "60px",
   zIndex: 10,
-  position: "sticky",
+  position: "absolute",
   top: 0,
 }));
 const StyledHeaderTitle = styled("h1")(() => ({
@@ -34,10 +34,12 @@ const StyledNav = styled("nav")(() => ({
 const Header = () => {
   return (
     <StyledHeader>
-      <StyledHeaderTitle>Solace Notes</StyledHeaderTitle>
+      <Link href="/">
+        <StyledHeaderTitle>Solace Notes</StyledHeaderTitle>
+      </Link>
       <StyledNav>
         <Link className="self-center" href="/">
-          Home
+          Notes
         </Link>
         |
         <Link className="self-center" href="/login">

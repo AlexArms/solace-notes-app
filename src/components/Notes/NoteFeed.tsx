@@ -22,8 +22,8 @@ const NoteFeed = () => {
   }
 
   return (
-    <>
-      <div className="text-center">
+    <div>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         {notes?.map((note) => {
           return <Note key={note.title} note={note} />;
         })}
@@ -31,7 +31,7 @@ const NoteFeed = () => {
           return <Note key={note.title} note={note} />;
         })}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -27,23 +27,28 @@ const StyledNoteFormContainer = styled(Box)(() => ({
   width: "100%",
   justifyContent: "space-evenly",
   alignItems: "center",
+  fontFamily: "Ubuntu, sans-serif",
 }));
 const StyledFormLabel = styled(FormLabel)(() => ({
   fontSize: "1.25rem",
   color: "#fff",
+  fontFamily: "Ubuntu, sans-serif",
 }));
 const StyledInput = styled(Input)(() => ({
   color: "#fff",
   width: "60%",
+  fontFamily: "Ubuntu, sans-serif",
+
   outline: "1px solid white",
-  fontSize: "1rem",
+  fontSize: "1.25rem",
   borderRadius: "2px",
 }));
 const StyledTextArea = styled(TextareaAutosize)(() => ({
   color: "#fff",
-  fontSize: "1rem",
+  fontSize: "1.25rem",
   width: "100%",
   borderRadius: "2px 2px 0 2px",
+  fontFamily: "Ubuntu, sans-serif",
 }));
 
 interface NoteModalProps {

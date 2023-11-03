@@ -25,7 +25,7 @@ const actionToBgColorMapping: Partial<{
   [value in NoteAction]: string;
 }> = {
   delete: "rgb(255, 0, 0)",
-  create: "rgb(0, 153, 0)",
+  create: "rgb(0, 102, 34)",
   edit: "rgb(82, 122, 122)",
 };
 

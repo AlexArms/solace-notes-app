@@ -14,6 +14,7 @@ const StyledMain = styled("main")(() => ({
   height: "100%",
   width: "100%",
   display: "flex",
+  paddingTop: "15px",
   flexDirection: "column",
 }));
 const StyledHr = styled("hr")(() => ({
