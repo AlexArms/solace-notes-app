@@ -16,6 +16,8 @@
     "@tanstack/react-query": "^5.4.3",
     "axios": "^1.6.0",
     "fuzzysort": "^2.0.4",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",

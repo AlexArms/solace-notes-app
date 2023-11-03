@@ -17,7 +17,7 @@ export default function Document() {
         rel="preconnect"
         href="https://fonts.gstatic.com"
         //@ts-ignore - // todo: fix typing - is this needed? was from google fonts
-        crossOrigin
+        crossOrigin="true"
       />
       <link
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap"

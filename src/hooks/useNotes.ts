@@ -33,14 +33,13 @@ const useNotes = () => {
 
   const fetchNotes = async () => {
     try {
-      const notes = await axios.get<Note[]>(
-        "http://localhost:4000/notes/get-all",
-        {
-          params: {
-            user: userStore.user,
-          },
-        }
-      );
+      const notes = await axios.get<Note[]>("/api/notes", {
+        params: {
+          user: userStore.user,
+        },
+      });
+
+      console.log("notes: ", notes);
 
       return notes.data;
     } catch (error: any) {
@@ -83,7 +82,6 @@ const useNotes = () => {
 
   const createNote = async () => {
     try {
-      console.log("createNote running");
       const noteHasTitle =
         newNoteStore.newNoteData.title.length > 0;
       const validNoteLength =
@@ -92,7 +90,7 @@ const useNotes = () => {
 
       if (noteHasTitle && validNoteLength) {
         const createRequest = await axios.post(
-          "http://localhost:4000/notes/create-note",
+          "/api/notes",
           {
             note: {
               ...newNoteStore.newNoteData,
@@ -112,7 +110,7 @@ const useNotes = () => {
     console.log("deleteNote note:", note);
     try {
       const deleteNoteRequest = await axios.delete(
-        "http://localhost:4000/notes/delete-note",
+        "/api/notes",
         {
           data: note,
         }
@@ -125,7 +123,7 @@ const useNotes = () => {
   const updateNote = async (currentNote: Note) => {
     try {
       const updateNoteRequest = await axios.patch(
-        "http://localhost:4000/notes/update-note",
+        "/api/notes",
         {
           data: {
             ...currentNote,
@@ -187,6 +185,8 @@ const useNotes = () => {
       setNotesToRender(fetchedNotes);
     }
   }, [fetchedNotes]);
+
+  console.log("notesToRender: ", notesToRender);
 
   return {
     notes: notesToRender,
