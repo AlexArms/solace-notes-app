@@ -157,6 +157,31 @@ const useNotes = () => {
     }
   };
 
+  const sortNotes = (event: any) => {
+    const sort = event.target.value;
+    const newNotes = [...notesToRender];
+
+    if (sort === "longest") {
+      newNotes.sort((noteA, noteB) => {
+        return noteB.content.length - noteA.content.length;
+      });
+    } else if (sort === "shortest") {
+      newNotes.sort((noteA, noteB) => {
+        return noteA.content.length - noteB.content.length;
+      });
+    } else if (sort === "oldest") {
+      newNotes.sort((noteA, noteB) => {
+        return noteA.createdAt - noteB.createdAt;
+      });
+    } else {
+      newNotes.sort((noteA, noteB) => {
+        return noteB.createdAt - noteA.createdAt;
+      });
+    }
+
+    setNotesToRender(newNotes);
+  };
+
   useEffect(() => {
     if (fetchedNotes !== undefined) {
       setNotesToRender(fetchedNotes);
@@ -167,6 +192,7 @@ const useNotes = () => {
     notes: notesToRender,
     mutateNotes,
     searchNotes,
+    sortNotes,
   };
 };
 

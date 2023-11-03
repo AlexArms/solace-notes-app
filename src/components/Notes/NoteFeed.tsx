@@ -4,6 +4,7 @@ import Note from "./Note";
 import NotePromptButton from "../Buttons/NotePromptButton";
 import NoteSearch from "./NoteSearch";
 import { styled } from "@mui/material";
+import NoteSort from "./NoteSort";
 
 const StyledNoteFeedNotice = styled("p")(() => ({
   color: "#fff",
@@ -14,7 +15,7 @@ const StyledNoteFeedNotice = styled("p")(() => ({
 }));
 
 const NoteFeed = () => {
-  const { notes, searchNotes } = useNotes();
+  const { notes, searchNotes, sortNotes } = useNotes();
   const [searching, setSearching] =
     useState<boolean>(false);
 
@@ -43,6 +44,7 @@ const NoteFeed = () => {
           setSearching={setSearching}
         />
       </div>
+      <NoteSort sortNotes={sortNotes} />
       {searching && !notes.length && (
         <StyledNoteFeedNotice>
           No notes found matching your search
