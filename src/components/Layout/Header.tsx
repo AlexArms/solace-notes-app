@@ -1,3 +1,4 @@
+import { useUserStore } from "@/stores/UserStore";
 import { styled } from "@mui/material";
 import Link from "next/link";
 import React from "react";
@@ -32,19 +33,31 @@ const StyledNav = styled("nav")(() => ({
 }));
 
 const Header = () => {
+  const userStore = useUserStore();
   return (
     <StyledHeader>
       <Link href="/">
         <StyledHeaderTitle>Solace Notes</StyledHeaderTitle>
       </Link>
+      {userStore.user && (
+        <p style={{ fontSize: "1.25rem" }}>
+          Hi, {userStore.user}!
+        </p>
+      )}
       <StyledNav>
         <Link className="self-center" href="/">
           Notes
         </Link>
         |
-        <Link className="self-center" href="/login">
-          Login
-        </Link>
+        {userStore.user ? (
+          <Link href="/" onClick={() => userStore.logout()}>
+            Logout
+          </Link>
+        ) : (
+          <Link className="self-center" href="/login">
+            Login
+          </Link>
+        )}
         {/* <div
           id="g_id_onload"
           data-client_id="1045090794395-e38bg6suru579hu38be7aj2ne7mq1e63.apps.googleusercontent.com"

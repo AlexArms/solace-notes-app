@@ -1,4 +1,7 @@
+import { useUserStore } from "@/stores/UserStore";
 import { Button, styled } from "@mui/material";
+import { Router, useRouter } from "next/router";
+import { useState } from "react";
 
 const StyledLoginButton = styled(Button)(() => ({
   fontFamily: "Ubuntu, sans-serif",
@@ -22,6 +25,18 @@ const StyledLoginInput = styled("input")(() => ({
 }));
 
 const Login = () => {
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const userStore = useUserStore();
+
+  const login = () => {
+    if (username.length >= 3 && !userStore.user) {
+      userStore.setUser(username);
+
+      router.push("/");
+    }
+  };
+
   return (
     <div
       style={{
@@ -51,8 +66,11 @@ const Login = () => {
         type="text"
         placeholder="Abc..."
         name="username"
+        onChange={(event) =>
+          setUsername(event.target.value)
+        }
       />
-      <label
+      {/* <label
         htmlFor="password"
         style={{
           fontSize: "1.5rem",
@@ -65,8 +83,10 @@ const Login = () => {
         type="text"
         placeholder="123..."
         name="password"
-      />
-      <StyledLoginButton>Login</StyledLoginButton>
+      /> */}
+      <StyledLoginButton onClick={login}>
+        Login
+      </StyledLoginButton>
     </div>
   );
 };

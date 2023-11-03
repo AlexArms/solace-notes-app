@@ -13,6 +13,7 @@ import {
 import NiceModal from "@ebay/nice-modal-react";
 import { Note } from "@/types/Note";
 import NoteActionButton from "../Buttons/NoteActionButton";
+import { useEffect } from "react";
 
 const StyledNoteFormContainer = styled(Box)(() => ({
   // border: "2px solid white",
@@ -55,7 +56,16 @@ interface NoteModalProps {
 
 const NoteModal = NiceModal.create(
   ({ note }: NoteModalProps) => {
-    const { updateNewNoteData } = useNewNoteStore();
+    const { updateNewNoteData, clearNewNoteData } =
+      useNewNoteStore();
+
+    useEffect(() => {
+      if (note !== undefined) {
+        updateNewNoteData(note);
+      } else {
+        clearNewNoteData();
+      }
+    }, [note, updateNewNoteData, clearNewNoteData]);
 
     return (
       <Dialog
@@ -65,7 +75,7 @@ const NoteModal = NiceModal.create(
         }}
         TransitionComponent={Slide}
         transitionDuration={500}
-        //@ts-ignore
+        //@ts-ignore - // todo: fix typing
         TransitionProps={{ direction: "up" }}
       >
         <div
@@ -83,7 +93,11 @@ const NoteModal = NiceModal.create(
               name="title"
               placeholder="Note Title"
               defaultValue={note?.title || ""}
-              onChange={updateNewNoteData}
+              onChange={(event) =>
+                updateNewNoteData({
+                  title: event.target.value,
+                })
+              }
             />
             <StyledFormLabel htmlFor="content">
               Note content
@@ -93,7 +107,11 @@ const NoteModal = NiceModal.create(
               name="content"
               placeholder="Write your note here"
               defaultValue={note?.content || ""}
-              onChange={updateNewNoteData}
+              onChange={(event) =>
+                updateNewNoteData({
+                  content: event.target.value,
+                })
+              }
             />
             <NoteActionButton
               variant={

@@ -6,6 +6,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
+import axios from "axios";
 
 const useNotes = () => {
   const queryClient = useQueryClient();
@@ -27,10 +28,10 @@ const useNotes = () => {
         createNote();
         break;
       case "delete":
-        //@ts-ignore
+        //@ts-ignore - // todo: fix typing
         deleteNote(mutationData?.note);
       case "update":
-        //@ts-ignore
+        //@ts-ignore - // todo: fix typing
         updateNote(mutationData?.note);
       default:
         break;
@@ -46,25 +47,26 @@ const useNotes = () => {
       }),
   });
 
-  const createNote = () => {
-    console.log("createNote running");
-    // POST request todo
-    const createdAt = new Date();
-    const noteHasTitle =
-      newNoteStore.newNoteData.title.length > 0;
-    const validNoteLength =
-      newNoteStore.newNoteData.content.length >= 20 &&
-      newNoteStore.newNoteData.content.length <= 300;
+  const createNote = async () => {
+    try {
+      console.log("createNote running");
+      const noteHasTitle =
+        newNoteStore.newNoteData.title.length > 0;
+      const validNoteLength =
+        newNoteStore.newNoteData.content.length >= 20 &&
+        newNoteStore.newNoteData.content.length <= 300;
 
-    if (noteHasTitle && validNoteLength) {
-      console.log(
-        "creating note with: ",
-        newNoteStore.newNoteData,
-        " and ",
-        createdAt
-      );
-    } else {
-      // todo show alert about needing a title and content length parameters
+      if (noteHasTitle && validNoteLength) {
+        const createRequest = await axios.post(
+          "http://localhost:4000/notes/create-note",
+          { note: newNoteStore.newNoteData }
+        );
+        console.log("createNote response: ", createRequest);
+      } else {
+        // todo show alert about needing a title and content length parameters
+      }
+    } catch (error) {
+      console.error("createNote error: ", error);
     }
   };
   const deleteNote = (note: Note) => {

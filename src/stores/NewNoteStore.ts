@@ -6,11 +6,8 @@ interface NewNoteStore {
     title: string;
     content: string;
   };
-  updateNewNoteData: (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement
-    >
-  ) => void;
+  updateNewNoteData: (noteFields: {}) => void;
+  clearNewNoteData: () => void;
 }
 
 export const useNewNoteStore = create<NewNoteStore>()(
@@ -19,11 +16,11 @@ export const useNewNoteStore = create<NewNoteStore>()(
       title: "",
       content: "",
     },
-    updateNewNoteData: debounce((event) => {
+    updateNewNoteData: debounce((noteFields) => {
       set((state) => ({
         newNoteData: {
           ...state.newNoteData,
-          [event.target.name]: event.target.value,
+          ...noteFields,
         },
       }));
     }, 200),

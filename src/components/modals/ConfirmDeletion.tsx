@@ -1,7 +1,7 @@
 import useNotes from "@/hooks/useNotes";
 import { Note } from "@/types/Note";
 import NiceModal from "@ebay/nice-modal-react";
-import { Box, Dialog } from "@mui/material";
+import { Box, Dialog, Slide } from "@mui/material";
 import { styled } from "@mui/system";
 import NoteButton from "../Buttons/NoteActionButton";
 
@@ -31,6 +31,10 @@ const ConfirmDeletion = NiceModal.create(
         onClose={() => {
           NiceModal.remove("confirm-note-deletion");
         }}
+        TransitionComponent={Slide}
+        transitionDuration={500}
+        //@ts-ignore - // todo: fix typing
+        TransitionProps={{ direction: "up" }}
       >
         <StyledNoteFormContainer>
           <p
